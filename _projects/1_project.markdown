@@ -1,27 +1,23 @@
 ---
 layout: page
-title: project 1
-description: a project with a background image
-img: /assets/img/12.jpg
+title: Knowledge Graphlets, Events, Timesequencing, Duration
+description: Mapping event descriptions from text, image, data, to Knowledge Graphlets and linking to Knowledge Graphs.
+img: /assets/img/kgetd.jpg
 importance: 1
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+Extracting event information from unstructured text, images, or semi-structured and structured data sets and streams is the focus of this project.
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+My approach is to use Knowledge Graphlets and Graph Transformations to describe events. Event descriptions are mapped onto Knowledge Graphlets, which are coherent and restricted graphs representing a description of an event based on entities, relations, and transformations. Transformations are in fact graph transformations from an initial event situation to the resulting event situation. They involve adding, removing, or altering entities, their properties, and their relations. These transformations are associated with a time point and a duration.
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+I work on and develop models, algorithms, and reasoning approaches for such graph-based event models using hybrid Machine Learning and AI approaches, in particular neural and symbolic Natural Language Processing, Computer Vision, and graph based neural models. 
+
+The extraction and interpretation of temporal reference and duration information in natural language text or speech for various languages is one of the challenging tasks that I focus on. Interpreting such information based on images using computer vision is another aspect of this research. Integrating other information sources, as for example sensory data, extends the problem space.
+
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/1.jpg' | relative_url }}" alt="" title="example image"/>
+        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/kgetd.jpg' | relative_url }}" alt="" title="example image"/>
     </div>
     <div class="col-sm mt-3 mt-md-0">
         <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/3.jpg' | relative_url }}" alt="" title="example image"/>

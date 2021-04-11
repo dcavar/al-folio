@@ -2,23 +2,33 @@
 layout: about
 title: about
 permalink: /
-description: <a href="#">Affiliations</a>. Address. Contacts. Moto. Etc.
+description: <a href="https://www.indiana.edu/">Indiana University at Bloomington</a>.
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: dc_pic2.jpg
   address: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>555 Ballantine Hall</p>
+    <p>1020 E. Kirkwood Ave.</p>
+    <p>Bloomington, IN 47405</p>
+    <p>USA</p>
 
 news: true  # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com){:target="\_blank"}. You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+Associate Professor of Computational Linguistics, Indiana University at Bloomington.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+Director of the [Natural Language Processing](https://nlp-lab.org/) ([NLP](https://nlp-lab.org/)) [Lab](https://nlp-lab.org/)
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](http://fortawesome.github.io/Font-Awesome/){:target="\_blank"} and [Academicons](https://jpswalsh.github.io/academicons/){:target="\_blank"}, like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+Fellow at the Center for Applied Cybersecurity Research (CACR)
+
+Data Science Faculty in the School of Informatics, Computation, and Engineering (SICE)
+
+Faculty Member of the Cognitive Science Program
+
+Co-founder of Semiring Inc., an AI, NLP, ML company.
+
+
+
