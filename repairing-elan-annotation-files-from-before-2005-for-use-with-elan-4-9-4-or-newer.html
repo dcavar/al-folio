@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>Damir  Cavar | blank</title>
+<title>Damir  Cavar | Repairing ELAN annotation files from before 2005 for use with ELAN 4.9.4 or newer</title>
 <meta name="description" content="Associate Professor of Computational Linguistics / Natural Language Processing.
 ">
 
@@ -31,7 +31,7 @@
 
 <link rel="stylesheet" href="/assets/css/main.css">
 
-<link rel="canonical" href="/blog/">
+<link rel="canonical" href="/repairing-elan-annotation-files-from-before-2005-for-use-with-elan-4-9-4-or-newer">
 
 <!-- JQuery -->
 <!-- jQuery -->
@@ -96,7 +96,7 @@
           </li>
           
           <!-- Blog -->
-          <li class="nav-item active">
+          <li class="nav-item ">
             <a class="nav-link" href="/blog/">
               blog
               
@@ -104,8 +104,6 @@
           </li>
           
           <!-- Other pages -->
-          
-          
           
           
           
@@ -172,62 +170,84 @@
     <!-- Content -->
 
     <div class="container mt-5">
-      <div class="post">
+      
 
-  <div class="header-bar">
-    <h1>Damir's Homepage</h1>
-    <h2>Damir Cavar's Academic Homepage</h2>
-  </div>
+<div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Repairing ELAN annotation files from before 2005 for use with ELAN 4.9.4 or newer</h1>
+    <p class="post-meta">August 8, 2016 • Damir Cavar</p>
+  </header>
+
+  <article class="post-content">
+    <p><a href="https://tla.mpi.nl/tools/tla-tools/elan/" title="ELAN">ELAN</a> 4.9.4 has issues with older versions of <a href="https://tla.mpi.nl/tools/tla-tools/elan/" title="ELAN">ELAN</a> Annotation Files (EAFs).</p>
+
+<p>We noticed that <a href="https://tla.mpi.nl/tools/tla-tools/elan/" title="ELAN">ELAN</a> annotation files (EAFs) from 2004 and earlier would not open in <a href="https://tla.mpi.nl/tools/tla-tools/elan/" title="ELAN">ELAN</a> 4.9.4, the most recent
+version of it. The problem is somewhat serious in that it does not alert one or show the reason for not showing any
+tiers or annotations. <a href="https://tla.mpi.nl/tools/tla-tools/elan/" title="ELAN">ELAN</a> 4.9.4 would open the files without any specific notification and just showing an empty
+tiers and media section.</p>
+
+<p>Han Sloetjes informed me that <a href="https://tla.mpi.nl/tools/tla-tools/elan/" title="ELAN">ELAN</a> has a log dialog under <em>View &gt; View Log…</em>. We identified the issue to be a
+missing attribute in the older EAF XML. The old XML root tag looks like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ANNOTATION_DOCUMENT AUTHOR="Jarrod Slocum"
+DATE="2004.03.02 13:56 CST"
+FORMAT="2.0" VERSION="2.0"
+xsi:noNamespaceSchemaLocation="http://www.mpi.nl/tools/elan/EAFv2.0.xsd"&gt;
+</code></pre></div></div>
+
+<p>This root tag is missing one important attribute that the newer <a href="https://tla.mpi.nl/tools/tla-tools/elan/" title="ELAN">ELAN</a> XML-parser requires. Han sent me this change
+suggestion:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ANNOTATION_DOCUMENT AUTHOR="Jarrod Slocum" DATE="2004.03.02 13:56 CST"
+ FORMAT="2.0" VERSION="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="http://www.mpi.nl/tools/elan/EAFv2.0.xsd"&gt;
+</code></pre></div></div>
+
+<p>This adds the attribute:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+</code></pre></div></div>
+
+<p>The issue with this problem is that many linguists working on <a href="https://tla.mpi.nl/tools/tla-tools/elan/" title="ELAN">ELAN</a> annotations and opening older EAFs will
+potentially get confused and might assume that they lost the data and start writing over the old EAFs and really
+lose the previous data and work. Please be aware of this issue and if you have archived EAFs from 2005 or earlier,
+you might have to correct the EAF XML to be able to view and edit it in the most recent <a href="https://tla.mpi.nl/tools/tla-tools/elan/" title="ELAN">ELAN</a>.</p>
+
+<p>I told Han that it might be a good idea to include the code in new <a href="https://tla.mpi.nl/tools/tla-tools/elan/" title="ELAN">ELAN</a> releases to correct this error
+automatically, since many archived files might be affected by this issue.</p>
+
+<p>If you have a lot of older <a href="https://tla.mpi.nl/tools/tla-tools/elan/" title="ELAN">ELAN</a> files with this issue, here is a script or set of commands that will add this
+attribute to the XML. You will need some version of Python 3.x to run this script. If you run this in an Unix
+environment (Mac OS X, Linux, Windows 10 with Linux Subsystem and Bash), you will also need <em>find</em>. This script
+will create a backup-copy of all EAFs that are repaired. I strongly recommend that you create your own backup copy
+and verify that the repaired EAFs can be opened with the newer versions of <a href="https://tla.mpi.nl/tools/tla-tools/elan/" title="ELAN">ELAN</a>.</p>
+
+<p>To repair all EAFs in the local folder, assuming that the script <a href="/Software/elanrepair.zip">elanrepair.py</a> is executable:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./elanrepair.py *.eaf
+</code></pre></div></div>
+
+<p>Download the script <a href="/Software/elanrepair.zip">elanrepair.py</a> in the ZIP-file <a href="/Software/elanrepair.zip">elanrepair.zip</a>.</p>
+
+<p>If the you cannot run the script directly, use the Python 3 interpreter to run it:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3  ./elanrepair.py *.eaf
+</code></pre></div></div>
+
+<p>If you want to recurse through a larger set of sub-folders in a bash-command line try:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find . -name "*.eaf" -type f -exec ./elanrepair.py {} \;
+</code></pre></div></div>
+
+<p>Let me know, if there are any issues with that.</p>
+
+<p>Damir</p>
 
 
-  <ul class="post-list">
-    
-      <li>
-        <h3><a class="post-title" href="//2020-01-23-Knowledge_Representation_and_Reasoning_for_AI_using_Lisp_Prolog">Meetings On Knowledge Representations and Reasoning for AI using Lisp and Prolog</a></h3>
-        <p class="post-meta">January 24, 2020</p>
-        <p></p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="//2019-11-02-Knowledge_Representation_and_Reasoning_for_AI_using_Deep_NLP_and_Description_Logic">Talk 11/02/2019 - On Knowledge Representations and Reasoning for AI using Deep NLP and Description Logic</a></h3>
-        <p class="post-meta">November 2, 2019</p>
-        <p></p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="//2019-09-26-Jupyter_Notebooks_for_NLP_AI_and_Computational_Linguistics">Jupyter Notebooks for NLP, AI, and Computational Linguistics</a></h3>
-        <p class="post-meta">September 26, 2019</p>
-        <p></p>
-      </li>
-    
-  </ul>
+  </article>
 
   
-<nav aria-label="Blog page naviation">
-  <ul class="pagination pagination-lg justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="" tabindex="-1" aria-disabled="">Newer</a>
-    </li>
-    
-      
-        <li class="page-item active"><a class="page-link" href="/blog/index.html" title="blank">1</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/2/index.html" title="blank - page 2">2</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/3/index.html" title="blank - page 3">3</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/4/index.html" title="blank - page 4">4</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/5/index.html" title="blank - page 5">5</a></li>
-      
-    
-    <li class="page-item ">
-      <a class="page-link" href="/blog/page/2/">Older</a>
-    </li>
-  </ul>
-</nav>
-
-
 
 </div>
 

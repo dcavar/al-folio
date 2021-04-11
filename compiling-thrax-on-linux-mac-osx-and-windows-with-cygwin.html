@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>Damir  Cavar | blank</title>
+<title>Damir  Cavar | Compiling Thrax on Linux, Mac OSX, and Windows with Cygwin</title>
 <meta name="description" content="Associate Professor of Computational Linguistics / Natural Language Processing.
 ">
 
@@ -31,7 +31,7 @@
 
 <link rel="stylesheet" href="/assets/css/main.css">
 
-<link rel="canonical" href="/blog/">
+<link rel="canonical" href="/compiling-thrax-on-linux-mac-osx-and-windows-with-cygwin">
 
 <!-- JQuery -->
 <!-- jQuery -->
@@ -96,7 +96,7 @@
           </li>
           
           <!-- Blog -->
-          <li class="nav-item active">
+          <li class="nav-item ">
             <a class="nav-link" href="/blog/">
               blog
               
@@ -104,8 +104,6 @@
           </li>
           
           <!-- Other pages -->
-          
-          
           
           
           
@@ -172,62 +170,88 @@
     <!-- Content -->
 
     <div class="container mt-5">
-      <div class="post">
+      
 
-  <div class="header-bar">
-    <h1>Damir's Homepage</h1>
-    <h2>Damir Cavar's Academic Homepage</h2>
-  </div>
+<div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Compiling Thrax on Linux, Mac OSX, and Windows with Cygwin</h1>
+    <p class="post-meta">July 17, 2016 • Damir Cavar</p>
+  </header>
+
+  <article class="post-content">
+    <p><a href="http://openfst.cs.nyu.edu/twiki/bin/view/GRM/Thrax" title="Thrax">Thrax</a> is a grammar compiler developed by a team of researchers at Google Research. It depends on <a href="http://www.openfst.org/twiki/bin/view/FST/WebHome" title="OpenFST">OpenFST</a>.
+See for more details on how to configure and compile <a href="http://www.openfst.org/twiki/bin/view/FST/WebHome" title="OpenFST">OpenFST</a>.</p>
+
+<p>Download and unpack the source of <a href="http://openfst.cs.nyu.edu/twiki/bin/view/GRM/Thrax" title="Thrax">Thrax</a> version 1.2.2 or newer.</p>
+
+<p>See what options configure provides:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./configure –help
+</code></pre></div></div>
+
+<p>Since I need the static libraries, I added this option:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>–enable-static
+</code></pre></div></div>
+
+<p>I also enabled the command line binaries:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>–enable-bin
+</code></pre></div></div>
+
+<p>and the <em>readline library</em> in the rewrite tester:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>–enable-readline
+</code></pre></div></div>
+
+<p>The last option presupposes that you have installed the devel-package for <em>libreadline</em> on your Mac OSX, <a href="https://getfedora.org/" title="Fedora">Fedora</a>,
+<a href="http://www.ubuntu.com/" title="Ubuntu">Ubuntu</a>, or Windows with <a href="http://cygwin.com/" title="Cygwin">Cygwin</a>.</p>
+
+<p>You have to have the complete <a href="http://www.openfst.org/twiki/bin/view/FST/WebHome" title="OpenFST">OpenFST</a> library compiled and installed on your system. <a href="http://openfst.cs.nyu.edu/twiki/bin/view/GRM/Thrax" title="Thrax">Thrax</a> depends on some more
+extensions that are not compiled with the default configuration of <a href="http://www.openfst.org/twiki/bin/view/FST/WebHome" title="OpenFST">OpenFST</a>. Follow the instructions on the blog
+post how to compile <a href="http://www.openfst.org/twiki/bin/view/FST/WebHome" title="OpenFST">OpenFST</a>.</p>
+
+<p>I also set the environment variable for Windows with <a href="http://cygwin.com/" title="Cygwin">Cygwin</a>. In particular the library path information seems to be
+necessary since the make process might stop with the message that it cannot find <em>libfst</em> and <em>libfstfar</em>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>export CXXFLAGS=”-O -D_POSIX_SOURCE  -L/usr/local/lib -I/usr/local/include”
+</code></pre></div></div>
+
+<p>My complete configure command in the <em>thrax-1.2.2</em> folder:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./configure –enable-static –enable-bin –enable-readline
+</code></pre></div></div>
+
+<p>To avoid issues with undefined ACCESSPERMS in the file <em>thrax-1.2.2/src/lib/util/utils.cc</em> you can add these three
+lines of code below the include statements (for example below line 31):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#ifndef ACCESSPERMS
+#define ACCESSPERMS (S_IRWXU|S_IRWXG|S_IRWXO)
+#endif
+</code></pre></div></div>
+
+<p>The maintainers of the <a href="http://openfst.cs.nyu.edu/twiki/bin/view/GRM/Thrax" title="Thrax">Thrax</a> code-base might want to add this anyway, since some operating systems do not declare
+ACCESSPERMS in the default. <a href="http://cygwin.com/" title="Cygwin">Cygwin</a> on Windows does not.</p>
+
+<p>To compile <a href="http://openfst.cs.nyu.edu/twiki/bin/view/GRM/Thrax" title="Thrax">Thrax</a> run:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make
+</code></pre></div></div>
+
+<p>Then follow up with a:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make install
+</code></pre></div></div>
+
+<p>On Mac OSX or Linux you might want to prepend a <em>sudo</em> to the command above.</p>
+
+<p>That was it.</p>
 
 
-  <ul class="post-list">
-    
-      <li>
-        <h3><a class="post-title" href="//2020-01-23-Knowledge_Representation_and_Reasoning_for_AI_using_Lisp_Prolog">Meetings On Knowledge Representations and Reasoning for AI using Lisp and Prolog</a></h3>
-        <p class="post-meta">January 24, 2020</p>
-        <p></p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="//2019-11-02-Knowledge_Representation_and_Reasoning_for_AI_using_Deep_NLP_and_Description_Logic">Talk 11/02/2019 - On Knowledge Representations and Reasoning for AI using Deep NLP and Description Logic</a></h3>
-        <p class="post-meta">November 2, 2019</p>
-        <p></p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="//2019-09-26-Jupyter_Notebooks_for_NLP_AI_and_Computational_Linguistics">Jupyter Notebooks for NLP, AI, and Computational Linguistics</a></h3>
-        <p class="post-meta">September 26, 2019</p>
-        <p></p>
-      </li>
-    
-  </ul>
+  </article>
 
   
-<nav aria-label="Blog page naviation">
-  <ul class="pagination pagination-lg justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="" tabindex="-1" aria-disabled="">Newer</a>
-    </li>
-    
-      
-        <li class="page-item active"><a class="page-link" href="/blog/index.html" title="blank">1</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/2/index.html" title="blank - page 2">2</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/3/index.html" title="blank - page 3">3</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/4/index.html" title="blank - page 4">4</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/5/index.html" title="blank - page 5">5</a></li>
-      
-    
-    <li class="page-item ">
-      <a class="page-link" href="/blog/page/2/">Older</a>
-    </li>
-  </ul>
-</nav>
-
-
 
 </div>
 

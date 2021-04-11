@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>Damir  Cavar | blank</title>
+<title>Damir  Cavar | On Ubuntu/Debian/... tools for linguists</title>
 <meta name="description" content="Associate Professor of Computational Linguistics / Natural Language Processing.
 ">
 
@@ -31,7 +31,7 @@
 
 <link rel="stylesheet" href="/assets/css/main.css">
 
-<link rel="canonical" href="/blog/">
+<link rel="canonical" href="/on-ubuntudebian-tools-for-linguists">
 
 <!-- JQuery -->
 <!-- jQuery -->
@@ -96,7 +96,7 @@
           </li>
           
           <!-- Blog -->
-          <li class="nav-item active">
+          <li class="nav-item ">
             <a class="nav-link" href="/blog/">
               blog
               
@@ -104,8 +104,6 @@
           </li>
           
           <!-- Other pages -->
-          
-          
           
           
           
@@ -172,62 +170,63 @@
     <!-- Content -->
 
     <div class="container mt-5">
-      <div class="post">
+      
 
-  <div class="header-bar">
-    <h1>Damir's Homepage</h1>
-    <h2>Damir Cavar's Academic Homepage</h2>
-  </div>
+<div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">On Ubuntu/Debian/... tools for linguists</h1>
+    <p class="post-meta">August 14, 2016 • Damir Cavar</p>
+  </header>
+
+  <article class="post-content">
+    <h3 id="draft--work-in-progress">DRAFT – Work in Progress</h3>
+
+<p>The standard <a href="https://www.ubuntu.com/" title="Ubuntu distribution">Ubuntu</a> distribution comes with various linguistic tools. I am linking here to 16.04(.1).</p>
+
+<p>Various Finite State Transducer toolkits can be found in the package list that are used for the development of
+morphological analyzers, tokenizers, and other NLP tools:</p>
+
+<ul>
+  <li><a href="http://packages.ubuntu.com/xenial/hfst" title="Helsinki Finite-State Transducer Technology">Helsinki Finite-State Transducer Technology</a> (<a href="http://packages.ubuntu.com/xenial/hfst" title="Helsinki Finite-State Transducer Technology">hfts</a>)</li>
+  <li><a href="http://packages.ubuntu.com/xenial/sfst" title="Stuttgart finite-state transducer tools">Stuttgart finite-state transducer tools</a> ([sfst])</li>
+  <li><a href="http://packages.ubuntu.com/xenial/foma-bin" title="Foma Ubuntu package">Foma</a>, <a href="http://packages.ubuntu.com/xenial/foma-bin" title="Foma Ubuntu package">Xerox-compatible finite-state compiler - library</a> (<a href="http://packages.ubuntu.com/xenial/foma-bin" title="Foma Ubuntu package">foma-bin</a>)</li>
+  <li><a href="http://packages.ubuntu.com/xenial/ragel" title="Ragel">Ragel</a> compiles finite state machines into code (<a href="http://packages.ubuntu.com/xenial/ragel" title="Ragel">ragel</a>)</li>
+</ul>
+
+<p>There are also ready NLP tools for various languages in the standard package list:</p>
+
+<ul>
+  <li><a href="http://packages.ubuntu.com/xenial/chasen" title="a Japanese Morphological Analysis System">Chasen</a>, a Japanese Morphological Analysis System (<a href="http://packages.ubuntu.com/xenial/chasen" title="a Japanese Morphological Analysis System">chasen</a>)</li>
+  <li><a href="http://packages.ubuntu.com/xenial/juman" title="Japanese morphological analysis system">Juman</a>, Japanese morphological analysis system (<a href="http://packages.ubuntu.com/xenial/juman" title="Japanese morphological analysis system">juman</a>)</li>
+  <li><a href="http://packages.ubuntu.com/xenial/frogdata" title="a morphosyntactic tagger, lemmatizer, morphological analyzer, and dependency parser for Dutch">Frog</a>, a morphosyntactic tagger, lemmatizer, morphological analyzer, and dependency parser for Dutch. (seems to be missing in the new distro) (see <a href="http://packages.ubuntu.com/xenial/frogdata" title="a morphosyntactic tagger, lemmatizer, morphological analyzer, and dependency parser for Dutch">frogdata</a>)</li>
+</ul>
+
+<h3 id="other-repositories">Other Repositories</h3>
+
+<p>Some repositories provide more packages that might be interesting or useful for linguistic work, be it language
+documentation or corpus linguistics:</p>
+
+<ul>
+  <li><a href="http://wiki.tei-c.org/index.php/TEIDebian" title="TEI XML Debian repo">Text Encoding Initiative</a> (<a href="http://wiki.tei-c.org/index.php/TEIDebian" title="TEI XML Debian repo">TEI</a>) XML Schema and XSLT files</li>
+  <li><a href="http://packages.sil.org/" title="SIL repository for Ubuntu">SIL repository</a> for <a href="https://www.ubuntu.com/" title="Ubuntu distribution">Ubuntu</a> with most recent versions of fonts, and the <a href="http://fieldworks.sil.org/flex/" title="FieldWorks Language Explorer">FieldWorks Language Explorer</a> (<a href="http://fieldworks.sil.org/flex/" title="FieldWorks Language Explorer">FLEx</a>) for <a href="https://www.ubuntu.com/" title="Ubuntu distribution">Ubuntu</a></li>
+  <li>…</li>
+</ul>
+
+<p>I set up the <a href="http://packages.sil.org/" title="SIL repository for Ubuntu">SIL repository</a> by creating as root or using sudo a file:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/etc/apt/sources.list.d/sil.list
+</code></pre></div></div>
+
+<p>with this content for <a href="https://www.ubuntu.com/" title="Ubuntu distribution">Ubuntu</a> xenial (16.04):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>deb http://packages.sil.org/ubuntu xenial main
+</code></pre></div></div>
 
 
-  <ul class="post-list">
-    
-      <li>
-        <h3><a class="post-title" href="//2020-01-23-Knowledge_Representation_and_Reasoning_for_AI_using_Lisp_Prolog">Meetings On Knowledge Representations and Reasoning for AI using Lisp and Prolog</a></h3>
-        <p class="post-meta">January 24, 2020</p>
-        <p></p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="//2019-11-02-Knowledge_Representation_and_Reasoning_for_AI_using_Deep_NLP_and_Description_Logic">Talk 11/02/2019 - On Knowledge Representations and Reasoning for AI using Deep NLP and Description Logic</a></h3>
-        <p class="post-meta">November 2, 2019</p>
-        <p></p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="//2019-09-26-Jupyter_Notebooks_for_NLP_AI_and_Computational_Linguistics">Jupyter Notebooks for NLP, AI, and Computational Linguistics</a></h3>
-        <p class="post-meta">September 26, 2019</p>
-        <p></p>
-      </li>
-    
-  </ul>
+  </article>
 
   
-<nav aria-label="Blog page naviation">
-  <ul class="pagination pagination-lg justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="" tabindex="-1" aria-disabled="">Newer</a>
-    </li>
-    
-      
-        <li class="page-item active"><a class="page-link" href="/blog/index.html" title="blank">1</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/2/index.html" title="blank - page 2">2</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/3/index.html" title="blank - page 3">3</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/4/index.html" title="blank - page 4">4</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/5/index.html" title="blank - page 5">5</a></li>
-      
-    
-    <li class="page-item ">
-      <a class="page-link" href="/blog/page/2/">Older</a>
-    </li>
-  </ul>
-</nav>
-
-
 
 </div>
 

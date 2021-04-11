@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>Damir  Cavar | blank</title>
+<title>Damir  Cavar | System 76 Lemur with Fedora 26 KDE Spin</title>
 <meta name="description" content="Associate Professor of Computational Linguistics / Natural Language Processing.
 ">
 
@@ -31,7 +31,7 @@
 
 <link rel="stylesheet" href="/assets/css/main.css">
 
-<link rel="canonical" href="/blog/">
+<link rel="canonical" href="/System_76_with_Fedora">
 
 <!-- JQuery -->
 <!-- jQuery -->
@@ -96,7 +96,7 @@
           </li>
           
           <!-- Blog -->
-          <li class="nav-item active">
+          <li class="nav-item ">
             <a class="nav-link" href="/blog/">
               blog
               
@@ -104,8 +104,6 @@
           </li>
           
           <!-- Other pages -->
-          
-          
           
           
           
@@ -172,62 +170,70 @@
     <!-- Content -->
 
     <div class="container mt-5">
-      <div class="post">
+      
 
-  <div class="header-bar">
-    <h1>Damir's Homepage</h1>
-    <h2>Damir Cavar's Academic Homepage</h2>
-  </div>
+<div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">System 76 Lemur with Fedora 26 KDE Spin</h1>
+    <p class="post-meta">August 12, 2017 • Damir Cavar</p>
+  </header>
+
+  <article class="post-content">
+    <p>I installed successfully <a href="https://spins.fedoraproject.org/kde/">Fedora 26 KDE Spin with Plasma Desktop</a> on my <a href="https://system76.com/laptops/lemur">System 76 Lemur</a>. The default <a href="https://www.ubuntu.com/">Ubuntu</a> had issues with many things, most annoying were issues with the wireless driver.</p>
+
+<p>As for the procedure:</p>
+
+<ul>
+  <li>Backup your <a href="https://system76.com/">System 76</a> data and other details (e.g. installed packages, <em>/usr/local</em>, <em>/opt</em>, some settings from <em>/etc</em>).</li>
+  <li>Download <a href="https://getfedora.org/">Fedora</a>, in my case the <a href="https://spins.fedoraproject.org/kde/download/index.html">Fedora 26 KDE Plasma Desktop</a>.</li>
+  <li>Create a bootable USB Flash drive using <a href="https://etcher.io/">Etcher</a>.</li>
+  <li>Plug it into the USB port.</li>
+  <li>Boot the <a href="https://system76.com/">System 76</a> holding down F7 to get into the boot menu.</li>
+  <li>Select the USB drive with <a href="https://getfedora.org/">Fedora</a> to boot from.</li>
+  <li>Follow the installation instructions.</li>
+  <li>Update the system after successful installation (using <em><a href="https://en.wikipedia.org/wiki/DNF_(Fedora)">dnf</a> update</em> in the terminal as sudo) and set up some essential software.</li>
+  <li>I added the <a href="https://rpmfusion.org/">RPM Fusion repos</a> and <em>Yumex-<a href="https://en.wikipedia.org/wiki/DNF_(Fedora)">DNF</a></em> via <a href="https://copr.fedorainfracloud.org/coprs/timlau/yumex-dnf/">COPR</a>.</li>
+  <li>Play back some backup data and my home directory from the previous installation.</li>
+  <li>Et voilà: more up to date operating system, newer kernel, newer compilers, etc.</li>
+</ul>
+
+<p>The only thing that I do not like is the default partitioning schema in the <a href="https://getfedora.org/">Fedora</a> installation. It creates a partition for the system (mounted at “/”), and one for the user home (mounted at “/home”). When setting up the partition schema, I let <a href="https://getfedora.org/">Fedora</a> set the default and then remove the “/home” partition and extend the root partition to maximum, that is the entire space. The partitioning tool shows you in the left corner at the bottom the entire space on your drive. I also chose to encrypt the drive, by the way.</p>
+
+<p>Interesting questions:</p>
+
+<ul>
+  <li>Will all devices work?</li>
+  <li>Will the wirless work?</li>
+  <li>What about an encrypted drive on a SSD? Is it configured correctly so that the TRIM function works?</li>
+  <li>What about suspend and wake up?</li>
+  <li>Does my <a href="https://www.overleaf.com/">Overleaf</a>, <a href="https://www.office.com/">Office365</a>, <a href="https://www.icloud.com/">iCloud</a>, <a href="https://www.dropbox.com/install-linux">Dropbox</a>, <a href="https://www.netflix.com/">Netflix</a>, … work?</li>
+</ul>
+
+<h3 id="activate-kde-connect-on-fedora-and-android">Activate KDE Connect on Fedora and Android</h3>
+
+<p>If you want to activate <a href="https://community.kde.org/KDEConnect">KDE Connect</a> on <a href="https://getfedora.org/">Fedora</a>, you need to open <a href="https://fedoraproject.org/wiki/Firewalld?rd=FirewallD">Firewall Configuration</a>. Change to <strong>Configuration: Permanent</strong>. Select your default configuration, e.g. <strong>public</strong> and in Services activate <em>kde-connect</em>. In the <em>Options</em> menu activate <em>Reload Firewalld</em>. On your Android device install <a href="https://community.kde.org/KDEConnect">KDE Connect</a> and refresh, pair and connect to your <a href="https://getfedora.org/">Fedora</a> system.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>If I encounter issues with something, I will report here.</p>
+
+<p>So far I did not encounter any issues with devices and drivers.</p>
+
+<ul>
+  <li>The <a href="https://www.kde.org/plasma-desktop">KDE Plasma Desktop</a> works just fine. (Finally no more <a href="https://unity.ubuntu.com/">Unity</a>, no more depressing <a href="https://www.gnome.org/">GNOME</a>… :-) ).</li>
+  <li>The default settings seem to be allowing my encrypted drive to apply the TRIM function.</li>
+  <li>Suspend in the default configuration did work even with the lid-close. Surprising was, it did work with the lid-open. <a href="https://getfedora.org/">Fedora</a> wakes up when you open the lid!</li>
+  <li>Some commercial software comes only with a <em>Debian</em> package. Use <em>alien</em> to set those up. Most important packages (say <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Oracle JDK</a>) are available as <a href="https://en.wikipedia.org/wiki/Rpm_(software)">RPM</a>-packages. My favorite <a href="https://www.jetbrains.com/">JetBrains</a> IDEs like <a href="https://www.jetbrains.com/clion/">CLion</a>, <a href="https://www.jetbrains.com/pycharm/">PyCharm</a>, <a href="https://www.jetbrains.com/webstorm/">WebStorm</a>, <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a> work just fine. I set those up in <em>/opt</em>, create a generic symbolic link to the original folder, configure a PATH variable in <em>/etc/profile.d</em>, repair the <em>.desktop</em>-files to point to the generic symbolic link folder to catch future updates.</li>
+  <li>Other software packages come with an <a href="https://en.wikipedia.org/wiki/Rpm_(software)">RPM</a>, as for example <a href="https://www.google.com/chrome/browser/desktop/index.html">Google Chrome</a>, <a href="https://github.com/brave/browser-laptop/blob/master/docs/linuxInstall.md">Brave</a>, or <a href="https://www.dropbox.com/install-linux">Dropbox</a>.</li>
+  <li>I am using <a href="https://www.tug.org/texlive/">LaTeX</a>, <a href="https://www.lyx.org/">LyX</a>, or online services like <a href="https://www.overleaf.com/">Overleaf</a> and <a href="https://www.office.com/">Office365</a>, but even Apple’s <a href="https://www.icloud.com/">iCloud</a> works just fine in a browser.</li>
+  <li>You can watch <a href="https://www.netflix.com/">Netflix</a> in <a href="https://www.mozilla.org/en-US/firefox/">Firefox</a> now. You will need to accept the extra <a href="https://en.wikipedia.org/wiki/Digital_rights_management">DRM</a> package the first time when you start watching some movie, but it works just fine.</li>
+</ul>
 
 
-  <ul class="post-list">
-    
-      <li>
-        <h3><a class="post-title" href="//2020-01-23-Knowledge_Representation_and_Reasoning_for_AI_using_Lisp_Prolog">Meetings On Knowledge Representations and Reasoning for AI using Lisp and Prolog</a></h3>
-        <p class="post-meta">January 24, 2020</p>
-        <p></p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="//2019-11-02-Knowledge_Representation_and_Reasoning_for_AI_using_Deep_NLP_and_Description_Logic">Talk 11/02/2019 - On Knowledge Representations and Reasoning for AI using Deep NLP and Description Logic</a></h3>
-        <p class="post-meta">November 2, 2019</p>
-        <p></p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="//2019-09-26-Jupyter_Notebooks_for_NLP_AI_and_Computational_Linguistics">Jupyter Notebooks for NLP, AI, and Computational Linguistics</a></h3>
-        <p class="post-meta">September 26, 2019</p>
-        <p></p>
-      </li>
-    
-  </ul>
+  </article>
 
   
-<nav aria-label="Blog page naviation">
-  <ul class="pagination pagination-lg justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="" tabindex="-1" aria-disabled="">Newer</a>
-    </li>
-    
-      
-        <li class="page-item active"><a class="page-link" href="/blog/index.html" title="blank">1</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/2/index.html" title="blank - page 2">2</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/3/index.html" title="blank - page 3">3</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/4/index.html" title="blank - page 4">4</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/5/index.html" title="blank - page 5">5</a></li>
-      
-    
-    <li class="page-item ">
-      <a class="page-link" href="/blog/page/2/">Older</a>
-    </li>
-  </ul>
-</nav>
-
-
 
 </div>
 

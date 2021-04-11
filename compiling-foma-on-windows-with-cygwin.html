@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>Damir  Cavar | blank</title>
+<title>Damir  Cavar | Compiling Foma on Windows with Cygwin</title>
 <meta name="description" content="Associate Professor of Computational Linguistics / Natural Language Processing.
 ">
 
@@ -31,7 +31,7 @@
 
 <link rel="stylesheet" href="/assets/css/main.css">
 
-<link rel="canonical" href="/blog/">
+<link rel="canonical" href="/compiling-foma-on-windows-with-cygwin">
 
 <!-- JQuery -->
 <!-- jQuery -->
@@ -96,7 +96,7 @@
           </li>
           
           <!-- Blog -->
-          <li class="nav-item active">
+          <li class="nav-item ">
             <a class="nav-link" href="/blog/">
               blog
               
@@ -104,8 +104,6 @@
           </li>
           
           <!-- Other pages -->
-          
-          
           
           
           
@@ -172,62 +170,58 @@
     <!-- Content -->
 
     <div class="container mt-5">
-      <div class="post">
+      
 
-  <div class="header-bar">
-    <h1>Damir's Homepage</h1>
-    <h2>Damir Cavar's Academic Homepage</h2>
-  </div>
+<div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Compiling Foma on Windows with Cygwin</h1>
+    <p class="post-meta">July 17, 2016 • Damir Cavar</p>
+  </header>
+
+  <article class="post-content">
+    <p><a href="https://fomafst.github.io/" title="Foma">Foma</a> comes as a package in the standard distribution of <a href="https://www.ubuntu.com/" title="Ubuntu">Ubuntu</a>. However, it might be necessary to recompile it,
+if you intend to link the static library to your software, since the static library was missing in the
+<a href="http://www.ubuntu.com/">16.04 LTE distro</a> that I tested. You can uninstall the fedora package and use the same
+instructions below to compile your own version with all components (i.e. binaries, dynamic and static libs,
+and include files) for <a href="https://www.ubuntu.com/" title="Ubuntu">Ubuntu</a> 16.04 or <a href="https://getfedora.org/" title="Fedora">Fedora</a> 24. In fact, the same is true for compilation on the most recent
+Mac OSX with Xcode.</p>
+
+<p>I got the <a href="https://fomafst.github.io/" title="Foma">Foma</a> source from the <a href="https://fomafst.github.io/">GitHub site</a> using the <em>foma-0.9.18.tar.gz</em> file.</p>
+
+<p>In the unpacked folder <em>foma-0.9.18</em>. I edited the <em>Makefile</em>. In <strong>line 16</strong> I changed the line:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LDFLAGS = -lreadline -lz -ltermcap
+</code></pre></div></div>
+
+<p>by removing the <em>-ltermcap</em> parameter to get:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>LDFLAGS = -lreadline -lz
+</code></pre></div></div>
+
+<p>I saved the changed <em>Makefile</em>.</p>
+
+<p>In [Cygwin] I made sure that all the development tools are installed, and in particular the package <em>libreadline-devel</em>.</p>
+
+<p>To compile <a href="https://fomafst.github.io/" title="Foma">Foma</a> I ran:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make
+</code></pre></div></div>
+
+<p>To install the libraries and include-files I ran:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make install
+</code></pre></div></div>
+
+<p>You could prepend the command above with <em>sudo</em> on Mac OSX or Linux. The components can be found in the subfolders
+<em>bin</em>, <em>lib</em>, <em>include</em> of <em>/usr/local</em>.</p>
+
+<p>That is all.</p>
 
 
-  <ul class="post-list">
-    
-      <li>
-        <h3><a class="post-title" href="//2020-01-23-Knowledge_Representation_and_Reasoning_for_AI_using_Lisp_Prolog">Meetings On Knowledge Representations and Reasoning for AI using Lisp and Prolog</a></h3>
-        <p class="post-meta">January 24, 2020</p>
-        <p></p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="//2019-11-02-Knowledge_Representation_and_Reasoning_for_AI_using_Deep_NLP_and_Description_Logic">Talk 11/02/2019 - On Knowledge Representations and Reasoning for AI using Deep NLP and Description Logic</a></h3>
-        <p class="post-meta">November 2, 2019</p>
-        <p></p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="//2019-09-26-Jupyter_Notebooks_for_NLP_AI_and_Computational_Linguistics">Jupyter Notebooks for NLP, AI, and Computational Linguistics</a></h3>
-        <p class="post-meta">September 26, 2019</p>
-        <p></p>
-      </li>
-    
-  </ul>
+  </article>
 
   
-<nav aria-label="Blog page naviation">
-  <ul class="pagination pagination-lg justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="" tabindex="-1" aria-disabled="">Newer</a>
-    </li>
-    
-      
-        <li class="page-item active"><a class="page-link" href="/blog/index.html" title="blank">1</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/2/index.html" title="blank - page 2">2</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/3/index.html" title="blank - page 3">3</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/4/index.html" title="blank - page 4">4</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/5/index.html" title="blank - page 5">5</a></li>
-      
-    
-    <li class="page-item ">
-      <a class="page-link" href="/blog/page/2/">Older</a>
-    </li>
-  </ul>
-</nav>
-
-
 
 </div>
 
